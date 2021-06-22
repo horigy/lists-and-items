@@ -1,5 +1,8 @@
 # lists-and-items
 
+## Published at 
+https://horigy.github.io/ngerasimov.github.io/lists-and-items/
+
 ## Project setup
 ```
 npm install
