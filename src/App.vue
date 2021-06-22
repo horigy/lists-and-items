@@ -1,17 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="wrapper">
+      <section class="section">
+
+        <!-- input panel -->
+        <div class="panel half">
+          <panel :lists="getLists"></panel>
+        </div>
+
+        <!-- result display -->
+        <div class="view half">
+          <displaylist :lists="getLists"></displaylist>
+        </div>
+      </section>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import panel from './components/Panel.vue'
+import displaylist from './components/Result.vue'
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    panel,
+    displaylist
+  },
+  data() {
+    return { }
+  },
+  computed: {
+    getLists() {
+      let arr = this.$store.getters.GETDATA;
+      return arr;
+    }
   }
 }
 </script>
@@ -21,8 +43,29 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.wrapper {
+    width: 100%;
+}
+.section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5%;
+
+}
+.half {
+    width: 48%;
+    border: 1px solid black;
+    padding: 30px;
+    height: 100%;
+    margin: 30px;
+}
+ul {
+    padding: 0;
+    margin: 0;
+}
+li {
+  list-style-type: none;
 }
 </style>
